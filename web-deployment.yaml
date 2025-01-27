@@ -38,6 +38,17 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        env:
+          - name: WEB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: synergychat-web-configmap
+                key: WEB_PORT
+          - name: API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: synergychat-web-configmap
+                key: API_URL
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
